@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flipkart Clone - Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!">
+    <meta name="keywords" content="Flipkart, online shopping, electronics, fashion, home, furniture">
+    <meta name="author" content="Your Name">
+    <title>FlipKart-Clone</title>
+    <!-- Preload critical assets -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" as="style">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+
+        }
+
+    
+        body{
+            background-color: rgba(215, 213, 213,0.2 )  !important;
+        }
+
+        nav {
+            top: 0px;
+            background-color: #fff;
+            z-index: 1000;
+            position: sticky;
+            display: flex;
+            height: 70px;
+            padding: 10px 25px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+            transition: all 0.3s ease;
+        }
+
+        nav:hover {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        #searchbar {
+            display: flex;
+            gap: 10px;
+            width: 400px;
+            height: 35px;
+            background-color: #f0f5ff;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        #searchbar:focus-within {
+            box-shadow: 0 0 0 2px #2874f0;
+        }
+
+        #searchbar>input {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            padding-left: 30px;
+            border: none;
+            outline: none;
+
+        }
+
+        #searchbar>i {
+            position: absolute;
+            top: 10px;
+            padding-left: 5px;
+        }
+
+        .header1 {
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 10px 20px;
+            width: auto;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+            justify-content: space-around;
+        }
+
+        .header1::-webkit-scrollbar {
+            display: none;
+            scroll-behavior: smooth;
+        }
+
+        .header1>.item>img {
+            width: 100px;
+            height: 100px;
+        }
+        .header1>.item>img:hover{
+            cursor:pointer;
+        }
+
+        .header1>.item>p {
+            font-weight: 500;
+        }
+
+        .header1>div>p:hover {
+            color: #2A55E5;
+            cursor:pointer;
+        }
+
+        .swiper {
+            margin: auto;
+            width: 97%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            /* background-color: #fff; */
+            padding: 20px 10px 20px 10px;
+            color: #ccc;
+        }
+
+        .section2-container {
+            background-color: #fff;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+            margin: 20px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+        }
+
+        .electronics-container::-webkit-scrollbar {
+            display: none;
+            scroll-behavior: smooth;
+        }
+
+        .electronics-container {
+            width: auto;
+            display: flex;
+            justify-content: space-around;
+            margin: 10px;
+            gap: 10px;
+            align-items: center;
+            text-align: center;
+        }
+
+        img {
+           width: 100px;
+           height: 100px;
+           transition: all 0.3s ease;
+        }
+       
+        .electronic-items {
+            padding: 10px;
+            margin:  10px;
+            /* border: 1px solid #ccc;  */
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+
+        .electronic-items:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-grid {
+            display: grid;
+            margin: 20px;
+            gap: 10px;
+            background-color: #fff;
+            box-shadow: 0px 0px 4px 2px gainsboro;
+            border: 1px solid #ccc;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, auto);
+            grid-template-areas: 
+                "griditem1 griditem2 griditem3"
+                "griditem4 griditem5 griditem6"
+                "griditem7 griditem8 griditem9";
+            height: auto;
+            min-height: fit-content;
+        }
+
+        .grid-item {
+            margin: 10px;
+            border: 1px solid #ccc;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            height: auto;
+            min-height: fit-content;
+        }
+
+        .griditem9 {
+            grid-area: griditem9;
+            height: auto;
+            min-height: fit-content;
+            display: flex;
+            align-items: stretch;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .griditem9 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: left;
+            display: block;
+        }
+
+        .griditem-top {
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .grid-item:hover .griditem-top {
+            transform: none;
+        }
+
+        .griditem-bottom img {
+            transition: all 0.3s ease;
+        }
+
+        .griditem-bottom img:hover {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gridbottom-item1,
+        .gridbottom-item2,
+        .gridbottom-item3,
+        .gridbottom-item4 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            margin: 5px;
+            border: 1px solid #ccc;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .gridbottom-item1:hover,
+        .gridbottom-item2:hover,
+        .gridbottom-item3:hover,
+        .gridbottom-item4:hover {
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .gridbottom-item1 img,
+        .gridbottom-item2 img,
+        .gridbottom-item3 img,
+        .gridbottom-item4 img {
+            transition: all 0.3s ease;
+        }
+
+        .gridbottom-item1:hover img,
+        .gridbottom-item2:hover img,
+        .gridbottom-item3:hover img,
+        .gridbottom-item4:hover img {
+            transform: scale(1.05);
+        }
+
+        .gridbottom-item1 p,
+        .gridbottom-item2 p,
+        .gridbottom-item3 p,
+        .gridbottom-item4 p {
+            transition: color 0.3s ease;
+        }
+
+        .gridbottom-item1:hover p,
+        .gridbottom-item2:hover p,
+        .gridbottom-item3:hover p,
+        .gridbottom-item4:hover p {
+            color: #2874f0;
+        }
+
+        .text-success {
+            transition: all 0.3s ease;
+        }
+
+        .gridbottom-item1:hover .text-success,
+        .gridbottom-item2:hover .text-success,
+        .gridbottom-item3:hover .text-success,
+        .gridbottom-item4:hover .text-success {
+            transform: scale(1.05);
+        }
+
+        .griditem-top h4 {
+            transition: color 0.3s ease;
+        }
+
+        .grid-item:hover .griditem-top h4 {
+            color: #2874f0;
+        }
+
+        .bottom-container1,
+        .bottom-container2 {
+            transition: all 0.3s ease;
+        }
+
+        .grid-item:hover .bottom-container1,
+        .grid-item:hover .bottom-container2 {
+            transform: none;
+        }
+
+        footer {
+
+            padding: 20px;
+        }
+
+        .footer-top {
+            display: flex;
+            font-weight: bold;
+            font-size: 10px;
+            gap: 20px;
+            justify-content: space-evenly;
+            border-bottom: 1px solid #676565;
+        }
+
+        .footer-top ul>li {
+            list-style-type: none;
+            line-height: 1.8;
+            text-transform: capitalize;
+            transition: color 0.3s ease;
+        }
+
+        .footer-top ul>li:hover {
+            color: #2874f0;
+        }
+
+        .social i:hover {
+            cursor: pointer;
+        }
+
+        .footer-top ul>p {
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .footer-top ul>li:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .footer-end {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 10px 30px;
+            align-items: center;
+            font-size: small;
+            text-align: center;
+        }
+
+        .footer-end i {
+            color: gold;
+        }
+
+        @media (max-width:768px) {
+            nav {
+                top: 0px;
+                display: flex;
+                padding: 10px 20px 10px 0px;
+                justify-content: space-between;
+                gap: 20px;
+                position: sticky;
+            }
+
+            #logo>img {
+                width: 160px;
+                height: 150px;
+
+            }
+
+            nav #login,
+            #cart,
+            #seller,
+            #threedots {
+                display: none;
+                position: absolute;
+            }
+
+            .swiper {
+                margin: auto;
+                width: 95%;
+                height: 100%;
+            }
+
+            .header1 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                box-shadow: 0px 0px 4px 2px gainsboro;
+            }
+            .item{
+                border: 1px solid #f3f1f1;
+                width: 100%;
+                height: 110px;
+                display: flex;
+                padding: 30px;
+                align-items: center;
+                gap: 60px;
+                justify-content: space-between;
+            }
+            .item:hover{
+                background-color:  #f3f1f1;
+            }
+            .item>img{
+                height: 10px;
+                width: 100px;
+            }
+
+            .section-grid {
+                display: grid;
+                height: auto;
+                justify-content: center;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(5, 1fr);
+                grid-template-areas: "griditem1  griditem2"
+
+                    "griditem3 griditem4"
+
+                    "griditem5 griditem6"
+
+                    "griditem7 griditem8"
+
+                    "griditem9 .         ";
+
+            }
+
+            .footer-end img {
+                display: none;
+
+            }
+
+            .footer-top {
+                display: grid;
+                height: auto;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                gap: 0px;
+
+
+            }
+
+            .footer-end {
+                margin: 10px;
+                padding: 20px 20px 10px 20px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2px;
+                font-size: x-small;
+            }
+
+            .footer-end img {
+
+                display: none;
+
+            }
+
+            .footer-end {
+                margin: 10px;
+                padding: 20px 20px 10px 20px;
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+
+            }
+
+
+        }
+
+        @media (max-width:428px) {
+            nav {
+                display: flex;
+                padding: 10px 20px 10px 0px;
+                justify-content: space-between;
+                gap: 20px;
+                position: sticky;
+                top: 0px;
+            }
+
+            #logo>img {
+
+                align-self: flex-start;
+                width: 70px;
+                height: 70px;
+
+            }
+
+            nav #login,
+            #cart,
+            #seller,
+            #threedots {
+                display: none;
+                position: absolute;
+            }
+
+            .swiper {
+                margin: auto;
+                width: 88%;
+                height: 100%;
+            }
+
+            .footer-top {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .footer-end {
+
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                align-items: flex-start;
+                font-size: x-small;
+            }
+
+            .footer-end img {
+
+                display: none;
+
+            }
+
+            .section-grid {
+                display: grid;
+                height: auto;
+                justify-content: center;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(9, 1fr);
+                grid-template-areas: "griditem1"
+                    "griditem2"
+                    "griditem3"
+                    "griditem4"
+                    "griditem5"
+                    "griditem6"
+                    "griditem7"
+                    "griditem8"
+                    "griditem9";
+
+            }
+
+        }
+
+        /* Improve button styles */
+        .morecircle {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .morecircle:hover {
+            background-color: #1a4cb3;
+            transform: scale(1.1);
+        }
+
+        /* Add accessibility improvements */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Add focus styles for better keyboard navigation */
+        a:focus, button:focus, input:focus {
+            outline: 2px solid #2874f0;
+            outline-offset: 2px;
+        }
+
+        /* Improve color contrast */
+        .text-success {
+            color: #008000 !important;
+        }
+
+        /* Add skip link for keyboard users */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #2874f0;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Add these new styles for responsive navigation */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links > div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links > div:hover {
+            color: #2874f0;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+                margin-left: 15px;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                z-index: 1000;
+                gap: 15px;
+                height: auto;
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+            }
+
+            .nav-links.active {
+                display: flex !important;
+            }
+
+            .nav-links > div {
+                width: 100%;
+                padding: 12px 15px;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .nav-links > div:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links > div:hover {
+                background-color: #f5f5f5;
+            }
+
+            #searchbar {
+                width: 200px;
+            }
+
+            nav {
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 428px) {
+            #searchbar {
+                width: 150px;
+            }
+
+            .nav-links > div {
+                padding: 10px;
+            }
+        }
+
+        .nav-link {
+            color: black;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #2874f0;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .close-modal:hover {
+            color: #2874f0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Add skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav role="navigation" aria-label="Main navigation">
+        <div id="logo">
+            <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
+                alt="logo_img">
+        </div>
+
+        <div id="searchbar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search For Products, Brands and More">
+        </div>
+
+        <div class="hamburger-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <div class="nav-links">
+            <div id="login" class="nav-item">
+                <i class="fa-regular fa-user"></i>
+                <a href="./signin.html" class="nav-link">Login</a>
+            </div>
+            <div id="cart" class="nav-item">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <a href="#" class="nav-link" onclick="showCart()">Cart</a>
+            </div>
+            <div id="seller" class="nav-item">
+                <i class="fa-solid fa-store"></i>
+                <a href="#" class="nav-link" onclick="showSellerInfo()">Become a Seller</a>
+            </div>
+            <div id="threedots" class="nav-item">
+                
+                <a href="#" class="nav-link" onclick="showMoreOptions()"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add modal containers -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('cartModal')">&times;</span>
+            <h2>Your Cart</h2>
+            <p>Your cart is empty</p>
+        </div>
+    </div>
+
+    <div id="sellerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('sellerModal')">&times;</span>
+            <h2>Become a Seller</h2>
+            <p>Start selling on Flipkart</p>
+            <ul>
+                <li>Lowest cost of doing business</li>
+                <li>Largest customer base</li>
+                <li>Fastest payments</li>
+            </ul>
+            <button onclick="window.location.href='#'" class="btn btn-primary">Start Selling</button>
+        </div>
+    </div>
+
+    <div id="moreModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('moreModal')">&times;</span>
+            <h2>More Options</h2>
+            <ul>
+                <li><a href="#">Notification Preferences</a></li>
+                <li><a href="#">24x7 Customer Care</a></li>
+                <li><a href="#">Advertise</a></li>
+                <li><a href="#">Download App</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="header1" style="overflow-x: scroll;">
+            <div class="item" id="item1">
+               <img src="https://rukminim1.flixcart.com/flap/96/96/image/29327f40e9c4d26b.png?q=100" alt="">
+                <p>Groceries</p>
+            </div>
+            <div class="item" id="item2">
+                <img src="https://rukminim1.flixcart.com/flap/96/96/image/22fddf3c7da4c4f4.png?q=100" alt="">
+                <p>Mobiles</p>
+            </div>
+            <div class="item" id="item3">
+                <img src="https://rukminim1.flixcart.com/fk-p-flap/96/96/image/0d75b34f7d8fbcb3.png?q=100">
+                <p>Fashion</p>
+            </div>
+            <div class="item" id="item4">
+                <img src="https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100" alt="">
+                <p>Electronics</p>
+            </div>
+
+            <div class="item" id="item5">
+                <img src="https://rukminim1.flixcart.com/flap/96/96/image/ab7e2b022a4587dd.jpg?q=100" alt="">
+                <p>Home & Furniture</p>
+            </div>
+            <div class="item" id="item6">
+                <img src="https://rukminim1.flixcart.com/fk-p-flap/96/96/image/0139228b2f7eb413.jpg?q=100" alt="">
+                <p>Appliances</p>
+            </div>
+            <div class="item" id="item7">
+                <img src="https://rukminim1.flixcart.com/flap/96/96/image/71050627a56b4693.png?q=100" alt="">
+                <p>Flight Bookings</p>
+            </div>
+            <div class="item" id="item8">
+                <img src="https://rukminim1.flixcart.com/flap/96/96/image/dff3f7adcf3a90c6.png?q=100" alt="">
+                <p>Beauty, Toys & More</p>
+            </div>
+            <div class="item" id="item9">
+                <img src="https://rukminim1.flixcart.com/fk-p-flap/96/96/image/05d708653beff580.png?q=100" alt="">
+                <p>Two Wheelers</p>
+            </div>
+        </div>
+        <section>
+            <!-- Swiper -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img
+                            src="https://rukminim1.flixcart.com/fk-p-flap/1010/170/image/b692b7eec25beda6.jpg?q=20"
+                            alt="carousalimages"></div>
+                    <div class="swiper-slide"><img
+                            src="https://rukminim1.flixcart.com/fk-p-flap/1010/170/image/dbd07c8f0d822f95.jpg?q=20"
+                            alt="carousalimages"></div>
+                    <div class="swiper-slide"><img
+                            src="https://rukminim1.flixcart.com/fk-p-flap/1010/170/image/74f0ad81e44e6e6f.jpg?q=20"
+                            alt="carousalimages"></div>
+                    <div class="swiper-slide"><img
+                            src="https://rukminim1.flixcart.com/fk-p-flap/1620/270/image/750c79f0ec29ae2b.jpeg?q=20"
+                            alt="carousalimages"></div>
+                    <div class="swiper-slide"><img
+                            src="https://rukminim1.flixcart.com/fk-p-flap/1620/270/image/94f996af22381cbb.jpg?q=20"
+                            alt="carousalimages"></div>
+                    <div class="swiper-slide"><img
+                            src="https://rukminim1.flixcart.com/fk-p-flap/1620/270/image/13e9ac766ea5f82b.jpeg?q=20"
+                            alt="carousalimages"></div>
+                    <div class="swiper-slide"><img
+                            src="https://rukminim1.flixcart.com/fk-p-flap/1620/270/image/02c1c2908eb3e690.png?q=20"
+                            alt="carousalimages"></div>
+                    <div class="swiper-slide"><img
+                            src="https://rukminim1.flixcart.com/fk-p-flap/1620/270/image/1bd9f11edbf77427.jpg?q=20"
+                            alt="carousalimages"></div>
+
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <section class="section2">
+
+            <div class="section2-container">
+
+                <h4 style=" padding: 20px;">Best of Electronics</h4>
+                <div class="electronics-container  " style="overflow-x:scroll;">
+                    <div class="electronic-items"><img
+                            src="./Product Images/nord-buds-ce-oneplus-original-imagfyk4hyvgg6ze.jpeg" height="auto" width="100%"
+                            alt="img">
+                        <div>
+                            <p>True Wireless</p>
+                            <p><b>Grab Now</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/monitor2.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Monitors</p>
+                            <p><b> From &#8377;9999</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/watch.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Smart Watch</p>
+                            <p><b>From &#8377;1099</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/monitor1.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Monitors</p>
+                            <p><b>From &#8377;6599</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/moniter3.jpeg"
+                            alt="img">
+                        <div>
+                            <p>SonicMoni..</p>
+                            <p><b>From &#8377;8000</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/flipkart-smartbuy-acrbb1m01-original-imafk4vq3kedyxku.jpeg">
+                        <div>
+                            <p>USB Cables</p>
+                            <p><b>From &#8377;499*</b></p>
+                        </div>
+                    </div>
+                    
+                    <div class="electronic-items"><img
+                            src="./Product Images/instax-instant-camera-mini-11-fujifilm-original-imaft7fpbhhne8qr.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Camera</p>
+                            <p><b>Shop Now</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/trimmer.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Shavers</p>
+                            <p><b>From &#8377;1649</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/i9-pro-10-ei9027-led-projector-egate-original-imah5e3bggu5qcgp.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Projector</p>
+                            <p><b>From &#8377;7949</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                        src="./Product Images/sdssde61-1t00-g25m-sandisk-original-imagsgpzfjagzdqf.webp"
+                        alt="img">
+                    <div>
+                        <p>SandDisk</p>
+                        <p><b>From &#8377;999</b></p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section2">
+
+            <div class="section2-container">
+
+                <h4 style=" padding: 20px;">Beauty, Food, Toys & More</h4>
+                <div class="electronics-container " style="overflow-x:scroll;">
+                    
+                   
+                    <div class="electronic-items"><img
+                            src="./Product Images/cycle.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Geared Cycles</p>
+                            <p><b> From &#8377;9999</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/stationary.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Stationary</p>
+                            <p><b>From &#8377;1099</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/4-function-remote-control-high-speed-big-racing-car-toy-funkey-original-imafkg33umd8dy93.jpeg"
+                            alt="img">
+                        <div>
+                            <p>RemoteControlToys</p>
+                            <p><b>From &#8377;6599</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/softtoys.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Soft Toys</p>
+                            <p><b>From &#8377;8000</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/xc-900-grey-lite-26-15-5-cradiac-21-gear-120-original-imagczuzpxeweczm.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Electric Cycles</p>
+                            <p><b>From &#8377;499*</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/push-up-bar-0-8-long-ankaro-original-imafu9dmvdk3rzvy.jpeg"
+                            alt="img">
+                        <div>
+                            <p>GymEssentials</p>
+                            <p><b>From &#8377;9999</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/3-30155-mcfarlane-2-5-original-imagbeyyzehpyk2m.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Best of Toys</p>
+                            <p><b>Shop Now</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/60-wooden-earth-jigsaw-puzzle-60-pcs-webby-original-imagyc8hsdztzdzb.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Puzzles&Cubes</p>
+                            <p><b>From &#8377;1649</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/fksbyellow-apache-rtr-160-flipkart-smartbuy-original-imafy658ggts6rwr.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Bike Cover</p>
+                            <p><b>From &#8377;7949</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                        src="./Product Images/m-9298233-mast-harbour-original-imafm78vbfvdzph7.jpeg"
+                        alt="img">
+                    <div>
+                        <p>Jackets</p>
+                        <p><b>From &#8377;7949</b></p>
+                    </div>
+                </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="section2">
+
+            <div class="section2-container">
+
+                <h4 style=" padding: 20px;">Sports, HealthCare & More</h4>
+                <div class="electronics-container " style="overflow-x:scroll;">
+                    <div class="electronic-items"><img
+                            src="./Product Images/anadi-01-yoga-mat-4-30-anadi-enterprise-15-original-imagfsxudxcm7r48 (1).jpeg"
+                            alt="img">
+                        <div>
+                            <p>Yoga Mat</p>
+                            <p><b>Grab Now</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/cofeepowder.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Tea Powder</p>
+                            <p><b> From &#8377;9999</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/1-oats-veggies-masala-oats-pouch-yogabar-original-imag5suhzvwy3xh4.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Oats</p>
+                            <p><b>From &#8377;1099</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/xylophone-guitar-wooden-kids-first-musical-sound-instrument-toy-original-imafyfszcjkjcwwz (1).jpeg"
+                            alt="img">
+                        <div>
+                            <p>Musical Toys</p>
+                            <p><b>From &#8377;6599</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/200-100-natural-california-pouch-happilo-original-imafzvw2tcazeur6.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Almonds</p>
+                            <p><b>From &#8377;8000</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/510-chocolate-peanut-butter-crunchy-510g-jar-nut-butter-original-imagyzpqqfaguxny.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Peanut Butter</p>
+                            <p><b>From &#8377;499*</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/10-100-corsac-white-original-imagzx8va46skzqw.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Sports Shoes</p>
+                            <p><b>From &#8377;9999</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                            src="./Product Images/f1ffa6330a602013.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Luggage Bags</p>
+                            <p><b>Shop Now</b></p>
+                        </div>
+                    </div>
+                   
+                    <div class="electronic-items"><img
+                            src="./Product Images/m-boxer-c26-rusksun-original-imah8yyqtkuqhrwb.jpeg"
+                            alt="img">
+                        <div>
+                            <p>Boxer's</p>
+                            <p><b>From &#8377;7949</b></p>
+                        </div>
+                    </div>
+                    <div class="electronic-items"><img
+                        src="./Product Images/ft098-steel-motorized-ft98-steel-motorized-motorized-fitkit-original-imafuerskytashcz.jpeg"
+                        alt="img">
+                    <div>
+                        <p>Thread Mill</p>
+                        <p><b>From &#8377;7949</b></p>
+                    </div>
+                </div>
+                <div class="electronic-items"><img
+                    src="./Product Images/xl-stwjogger-cleo-black-sharktribe-original-imagg7f8zf9gpfhd.jpeg"
+                    alt="img">
+                <div>
+                    <p>Jogger's</p>
+                    <p><b>From &#8377;7949</b></p>
+                </div>
+            </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-grid">
+            <div class="grid-item griditem1 p-3">
+
+                <div class="griditem-top d-flex justify-content-between">
+                    <h4>Festive Must Have's</h4>
+                    <div class="morecircle text-light ">&raquo;</div>
+                </div>
+                <div class="griditem-bottom mt-3">
+                    <div class="bottom-container1 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item1 h-25">
+                            <img src="./Product Images/l-box01-jackbella-original-imah8zzmx6zgvyhy.jpeg"
+                                alt="">
+                            <p>Casual Shirs</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item2 h-25 ">
+                            <img src="./Product Images/l-aa-0171white-pink-floral-yoke-dress-aayu-original-imaggd2hszpruetz.jpeg"
+                                alt="">
+                            <p>Women's</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                    <div class="bottom-container2 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item3 h-25">
+                            <img src="./Product Images/4xl-formal-shirt-metronaut-original-imah27td3xzegf9g.jpeg"
+                                alt="">
+                            <p>Formals</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item4 h-25">
+                            <img src="./Product Images/xxl-red-paak-tabeedah-original-imah8h73rqxdrvzz.jpeg"
+                                alt="">
+                            <p>Traditional</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="grid-item griditem2 p-3">
+                <div class="griditem-top d-flex justify-content-between">
+                    <h4>Summer Fashion</h4>
+                    <div class="morecircle text-light">&raquo;</div>
+                </div>
+                <div class="griditem-bottom  mt-3">
+                    <div class="bottom-container1 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item1 h-25 ">
+                            <img src="./Product Images/m-black-ovile-tocayo-original-imah483geqd34nnp.jpeg"
+                                alt="">
+                            <p>Men's Vests</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item2 h-25 ">
+                            <img src="./Product Images/7-slippers-for-men-rootbook-green-original-imah82tpxhyvqnfk.jpeg"
+                                alt="">
+                            <p>Slippers</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                    <div class="bottom-container2 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item3 h-25 ">
+                            <img src="./Product Images/9-566-copser-gray-original-imah5fzyyxj2sgws.jpeg"
+                                alt="">
+                            <p>Casual shoes</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item4 h-25 ">
+                            <img src="./Product Images/8-vegan-casual-backpack-for-men-13-145-backpack-worng-40-19-original-imahak4h7xqefapt.jpeg">
+                            <p>BackPacks</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item griditem3 p-3">
+                <div class="griditem-top d-flex justify-content-between">
+                    <h4>Make Your Home Stylish</h4>
+                    <div class="morecircle text-light">&raquo;</div>
+                </div>
+                <div class="griditem-bottom  mt-3">
+                    <div class="bottom-container1 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item1 h-25 ">
+                            <img src="./Product Images/double-bed-premium-net-flexible-for-all-size-bed-masara-insect-original-imahb4hzynguz7gy.jpeg"
+                                alt="">
+                            <p>MosquitoNets</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item2 h-25 ">
+                            <img src="./Product Images/280-carbon-steel-750-1-6-4-firozi-wd-brodio-firozi-880-original-imahfhdescfrtgr2.jpeg"
+                                alt="">
+                            <p>Shoe Rack</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                    <div class="bottom-container2 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item3 h-25 ">
+                            <img src="./Product Images/8-cl11779-autosite-original-imaggzzjggnxjz6z.jpeg"
+                                alt="">
+                            <p>Bath Towels</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item4 h-25 ">
+                            <img src="./Product Images/left-facing-180-34-aqua-blue-241-3-polyester-80-steffan-l-sheped-original-imagf9zer8ptqhrh.jpeg"
+                                alt="">
+                            <p>Sofa's</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item griditem4 p-3">
+                <div class="griditem-top d-flex justify-content-between">
+                    <h4>Home Decor & Furnishings</h4>
+                    <div class="morecircle text-light">&raquo;</div>
+                </div>
+                <div class="griditem-bottom  mt-3">
+                    <div class="bottom-container1 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item1 h-25">
+                            <img src="./Product Images/waterbottles.jpeg"
+                                alt="">
+                            <p>Water Bottles</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item2 h-25">
+                            <img src="./Product Images/plants.jpeg"
+                                alt="">
+                            <p>Plants</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                    <div class="bottom-container2 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item3 h-25">
+                            <img src="./Product Images/Bed.jpeg"
+                                alt="">
+                            <p>Bed</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item4 h-25 ">
+                            <img src="./Product Images/bathroomracks.jpeg"
+                                alt="">
+                            <p>BathRoom R..</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item griditem5 p-3">
+                <div class="griditem-top d-flex justify-content-between">
+                    <h4>Travel Essentials</h4>
+                    <div class="morecircle text-light">&raquo;</div>
+                </div>
+                <div class="griditem-bottom  mt-3">
+                    <div class="bottom-container1 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item1 h-25">
+                            <img src="./Product Images/trimmer.jpeg"
+                                alt="">
+                            <p>Trimmers</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item2 h-25 ">
+                            <img src="./Product Images/casual shirt.jpeg"
+                                alt="">
+                            <p>Casual Shirts</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                    <div class="bottom-container2 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item3 h-25 ">
+                            <img src="./Product Images/t-shirt.jpeg"
+                                alt="">
+                            <p>Men's Tshirts</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item4 h-25 ">
+                            <img src="./Product Images/nightsuit.jpeg"
+                                alt="">
+                            <p>Night Suits</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item griditem6 p-3">
+                <div class="griditem-top d-flex justify-content-between">
+                    <h4>Season's Top Picks</h4>
+                    <div class="morecircle text-light">&raquo;</div>
+                </div>
+                <div class="griditem-bottom  mt-3">
+                    <div class="bottom-container1 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item1 h-25 ">
+                            <img src="./Product Images/xs-2519735-roadster-original-imag2xgmq9z2zbrb.jpeg"
+                                alt="">
+                            <p>T-Shirts</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item2 h-25 ">
+                            <img src="./Product Images/6-213-blue-06-arotek-blue-original-imah7fyzexvmjg7g.jpeg"
+                                alt="">
+                            <p>Footwear</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                    <div class="bottom-container2 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item3 h-25 ">
+                            <img src="./Product Images/11391306-40-u-s-polo-assn-white-original-imafsnetwnyzu8x2.jpeg"
+                                alt="">
+                            <p>Casual shoes</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item4 h-25">
+                            <img src="./Product Images/l-2-jc22-2pck-ls-black-lgry-gymfit-jump-cuts-original-imah5697qwp2hx63.jpeg"
+                                alt="">
+                            <p>Summer Wear</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item griditem7 p-3">
+                <div class="griditem-top d-flex justify-content-between">
+                    <h4>Appliance For Cool Summer</h4>
+                    <div class="morecircle text-light">&raquo;</div>
+                </div>
+                <div class="griditem-bottom  mt-3">
+                    <div class="bottom-container1 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item1 h-25 ">
+                            <img src="./Product Images/Ac.jpeg"
+                                alt="">
+                            <p>AC</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item2 h-25 ">
+                            <img src="./Product Images/cooler.jpeg"
+                                alt="">
+                            <p>Cooler</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                    <div class="bottom-container2 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item3 h-25">
+                            <img src="./Product Images/cs-2023-sb-24-50-1-ceiling-fan-600-herrricane-original-imahf5tm3d5vxdsg.jpeg"
+                                alt="">
+                            <p>CeilingFan</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item4 h-25">
+                            <img src="./Product Images/fridge.jpeg"
+                                alt="">
+                            <p>Fridge</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item griditem8 p-3">
+                <div class="griditem-top d-flex justify-content-between">
+                    <h4>Electronics</h4>
+                    <div class="morecircle text-light">&raquo;</div>
+                </div>
+                <div class="griditem-bottom  mt-3">
+                    <div class="bottom-container1 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item1 h-25">
+                            <img src="./Product Images/philips-s1121-45-s1121-45-original-imafry2qgxcwnm9r.jpeg"
+                                alt="">
+                            <p>PhilipsTrim..</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item2 h-25 ">
+                            <img src="./Product Images/kids-camera-mini-rechargeable-and-shockproof-camera-creative-diy-original-imag5h7gdjzrvzdr.jpeg"
+                                alt="">
+                            <p>Camera</p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                    <div class="bottom-container2 d-flex align-items-center justify-content-evenly">
+                        <div class="gridbottom-item3 h-25 ">
+                            <img src="./Product Images/Drone.jpeg"
+                                alt="">
+                            <p>Drone </p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                        <div class="gridbottom-item4 h-25 ">
+                            <img src="./Product Images/ledbuld.jpeg"
+                                alt="">
+                            <p>LED Bulb </p>
+                            <p class="text-success "><b>Min 70% Off</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item griditem9">
+                <img src="./grid-aside-img.PNG" alt="Grid aside image">
+            </div>
+            
+    </div>
+
+
+    </section>
+
+    <footer class="bg-dark text-light">
+        <div class="footer-top ">
+            <div class="footer-item1">
+                <ul>
+                    <p style="color: #ccc;">About </p>
+                    <li>About us</li>
+                    <li>Contact Us</li>
+                    <li>Careers</li>
+                    <li>Flipkart Stories</li>
+                    <li>Press</li>
+                    <li>Corporate Information</li>
+                </ul>
+
+            </div>
+            <div class="footer-item2">
+                <ul>
+                    <p style="color: #ccc;">group Companies </p>
+                    <li>myntra</li>
+                    <li>Cleartrip</li>
+                    <li>Shopsy</li>
+
+                </ul>
+            </div>
+            <div class="footer-item3">
+                <ul>
+                    <p style="color: #ccc;">help </p>
+                    <li>payments</li>
+                    <li>shipping</li>
+                    <li>Cancelletion &</li>
+                    <li>Returns</li>
+                    <li>FAQ</li>
+
+                </ul>
+            </div>
+            <div class="footer-item4">
+                <ul style="border-right: 1px solid  #676565; padding-right: 40px;">
+                    <p style="color: #ccc;">consumer policy </p>
+                    <li>Cancelletion &</li>
+                    <li>Returns</li>
+                    <li>Terms of Use</li>
+                    <li>Security</li>
+                    <li>Privacy</li>
+                    <li>Sitemap</li>
+                    <li>Grievance Redressal</li>
+                    <li>EPR Compliance</li>
+                </ul>
+
+            </div>
+            <div class="footer-item5">
+                <ul>
+                    <p style="color: #ccc;">Mail Us</p>
+                    <li>Flipkart internet private limited,</li>
+                    <li>Buildings Alysa, Begonia & </li>
+                    <li>Clove Embasy tech village, </li>
+                    <li>outer ring road, devarabeesanahalli village,</li>
+                    <li>Bengaluru,560103</li>
+                    <li>Karnataka, india</li><br>
+                    <p class="social" style="color: #ccc;">Social:</p>
+                    <span class="pe-2" style="font-size: 15px;"><i class="fa-brands fa-facebook"></i></span>
+                    <span class="p-2" style="font-size: 15px;"><i class="fa-brands fa-x-twitter"></i></span>
+                    <span class="p-2" style="font-size: 15px;"><i class="fa-brands fa-youtube"></i></span>
+                    <span class="p-2" style="font-size: 15px;"><i class="fa-brands fa-instagram"></i></span>
+
+                </ul>
+            </div>
+            <div class="footer-item6">
+                <ul>
+                    <p style="color: #ccc;">Registered Office Address</p>
+                    <li>Flipkart internet private limited,</li>
+                    <li>Buildings Alysa, Begonia & </li>
+                    <li>Clove Embasy tech village, </li>
+                    <li>outer ring road, devarabeesanahalli village,</li>
+                    <li>Bengaluru,560103</li>
+                    <li>Karnataka, india</li>
+                    <li>CIN: U51109KA2012PTC0661701</li>
+                    <li>Telephone : <span class="text-primary">044-456176402</span> / <span
+                            class="text-primary">044-63294205097</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-end">
+            <div class="footerend-item1">
+
+                <p><i class="fa-solid fa-store"></i> Become A seller</p>
+            </div>
+            <div class="footerend-item2">
+
+                <p><i class="fa-regular fa-star"></i> Advertise</p>
+            </div>
+            <div class="footerend-item3">
+
+                <p> <i class="fa-solid fa-gift"></i> Gift Cards</p>
+            </div>
+            <div class="footerend-item4">
+
+                <p> <i class="fa-regular fa-circle-question"></i> Help Center</p>
+            </div>
+            <div class="footerend-item5 ">
+
+                <p><i class="fa-regular fa-copyright"></i> All Rights Reserved by Aslam Sayyed</p>
+            </div>
+            <div class="footerend-item6 ">
+
+                <p>&copy;2025 Flipkart.com</p>
+            </div>
+           
+
+        </div>
+
+
+    </footer>
+
+
+
+
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        // Lazy loading for images
+        document.addEventListener("DOMContentLoaded", function() {
+            var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.classList.remove("lazy");
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+        });
+
+        // Initialize Swiper with improved settings
+        var swiper = new Swiper(".mySwiper", {
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            effect: "fade",
+            fadeEffect: {
+                crossFade: true
+            },
+            speed: 1000,
+        });
+
+        // Update hamburger menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const navLinks = document.querySelector('.nav-links');
+            const body = document.body;
+
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                    body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+                        navLinks.classList.remove('active');
+                        body.style.overflow = '';
+                    }
+                });
+
+                // Close menu when window is resized above mobile breakpoint
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        navLinks.classList.remove('active');
+                        body.style.overflow = '';
+                    }
+                });
+
+                // Close menu when pressing Escape key
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+        });
+
+        // Modal functions
+        function showCart() {
+            document.getElementById('cartModal').style.display = 'block';
+        }
+
+        function showSellerInfo() {
+            document.getElementById('sellerModal').style.display = 'block';
+        }
+
+        function showMoreOptions() {
+            document.getElementById('moreModal').style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Close modals when pressing Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            }
+        });
+    </script>
+
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</body>
+
+</html>

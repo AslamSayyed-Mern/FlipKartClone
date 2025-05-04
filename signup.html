@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign up for Flipkart - India's leading e-commerce platform">
+    <title>Sign up - Flipkart</title>
+    <!-- Preload critical assets -->
+    <link rel="preload" href="./signup.css" as="style">
+    <link rel="preload" href="https://code.jquery.com/jquery-1.10.2.js" as="script">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="./signup.css">
+</head>
+<body>
+    <div id="container" role="banner"></div>
+   
+    <main id="outerbox" role="main">
+        <div id="innerbox">
+            <div class="leftinnerbox">
+                <h1 class="para1">Looks like you're new here!</h1>
+                <p class="para2">Sign up with your mobile number to get started</p>
+                <div class="signup-image">
+                    <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/login_img_c4a81e.png" 
+                         alt="Sign up illustration" 
+                         loading="lazy"
+                         width="300"
+                         height="300">
+                </div>
+            </div>
+            <div class="rightinnerbox">
+                <form id="signupForm" onsubmit="return Signup(event)">
+                    <div class="form-group">
+                        <label for="phone" class="visually-hidden">Mobile Number</label>
+                        <input id="phone" 
+                               class="mobile" 
+                               type="tel" 
+                               pattern="[0-9]{10}"
+                               placeholder="Enter Mobile Number"
+                               required
+                               aria-required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="naam" class="visually-hidden">Full Name</label>
+                        <input id="naam" 
+                               class="name" 
+                               type="text" 
+                               placeholder="Enter your Name"
+                               required
+                               aria-required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="pass" class="visually-hidden">Password</label>
+                        <input id="pass" 
+                               class="password" 
+                               type="password" 
+                               placeholder="Enter Password"
+                               required
+                               aria-required="true"
+                               minlength="6"/>
+                    </div>
+                    <div class="terms">
+                        <p class="textm">By continuing, you agree to Flipkart's 
+                            <a href="#" class="link">Terms of Use</a>
+                            and <a href="#" class="link">Privacy Policy</a>.</p>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" 
+                                class="continue"
+                                aria-label="Continue with sign up">CONTINUE</button>
+                        <a href="signin.html" 
+                           class="login-link"
+                           role="button"
+                           aria-label="Go to login page">Existing User? Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        $(function(){
+            $("#container").load("./Navabar.html");
+        });
+    </script>
+    <script src="./signup.js"></script>
+</body>
+</html>
